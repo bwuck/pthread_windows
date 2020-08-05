@@ -1,0 +1,89 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+*.dSYM
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Build generated files.
+bazel-*
+
+# IDE configurations.
+.vsbuild/
+.idea/
+
+# Operating system generated temp files.
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+._*
+Desktop.ini
+Thumbs.db
+__MACOSX
+ehthumbs.db
+
+# Emacs generated temp files.
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Common typos turned into files by emacs
+\;
+\:*
+\#
+
+# Python generated temp files.
+*.py[co]
+__pycache__
+
+# Nodejs generated files/directories.
+node_modules
+
+# Rust generated files
+target/
+
+# Security credentials and certificates
+# OpenSSL
+*.crt
+*.csr
+*.der
+*.key
+*.pem
+
+# GNU Global Tags Database.
+GPATH
+GRTAGS
+GTAGS
