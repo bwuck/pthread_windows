@@ -1,0 +1,26 @@
+load("//:defs.bzl", "windows_dll")
+
+# Do not use: work in progress.
+windows_dll(
+    name_prefix = "pthread",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:attr",
+        "//:barrier",
+        "//:cancel",
+        "//:condvar",
+        "//:dll",
+        "//:exit",
+        "//:headers",
+        "//:misc",
+        "//:mutex",
+        "//:nonportable",
+        "//:private",
+        "//:rwlock",
+        "//:sched",
+        "//:semaphore",
+        "//:spin",
+        "//:sync",
+        "//:tsd",
+    ],
+)

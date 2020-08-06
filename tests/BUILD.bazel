@@ -1,0 +1,1054 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
+
+test_suite(
+    name = "all_tests",
+    tests = [
+        ":barrier1_test",
+        ":barrier2_test",
+        ":barrier3_test",
+        ":barrier4_test",
+        ":barrier5_test",
+        ":barrier6_test",
+        ":benchtest1_test",
+        ":benchtest2_test",
+        ":benchtest3_test",
+        ":benchtest4_test",
+        ":benchtest5_test",
+        ":cancel1_test",
+        ":cancel2_test",
+        ":cancel3_test",
+        ":cancel4_test",
+        ":cancel5_test",
+        ":cancel6a_test",
+        ":cancel6d_test",
+        ":cancel7_test",
+        ":cancel8_test",
+        ":cancel9_test",
+        ":cleanup0_test",
+        ":cleanup1_test",
+        ":cleanup2_test",
+        ":cleanup3_test",
+        ":condvar1_1_test",
+        ":condvar1_2_test",
+        ":condvar1_test",
+        ":condvar2_1_test",
+        ":condvar2_test",
+        ":condvar3_1_test",
+        ":condvar3_2_test",
+        ":condvar3_3_test",
+        ":condvar3_test",
+        ":condvar4_test",
+        ":condvar5_test",
+        ":condvar6_test",
+        ":condvar7_test",
+        ":condvar8_test",
+        ":condvar9_test",
+        ":context1_test",
+        ":count1_test",
+        ":create1_test",
+        ":create2_test",
+        ":create3_test",
+        ":delay1_test",
+        ":delay2_test",
+        ":detach1_test",
+        ":equal1_test",
+        ":errno1_test",
+        ":exception1_test",
+        ":exception2_test",
+        ":exception3_test",
+        ":exit1_test",
+        ":exit2_test",
+        ":exit3_test",
+        ":exit4_test",
+        ":exit5_test",
+        ":eyal1_test",
+        ":inherit1_test",
+        ":join0_test",
+        ":join1_test",
+        ":join2_test",
+        ":join3_test",
+        ":kill1_test",
+        # We currently don't support DLLs with Bazel.
+        # ":loadfree_test",
+        ":mutex1_test",
+        ":mutex1e_test",
+        ":mutex1n_test",
+        ":mutex1r_test",
+        ":mutex2_test",
+        ":mutex2e_test",
+        ":mutex2r_test",
+        ":mutex3_test",
+        ":mutex3e_test",
+        ":mutex3r_test",
+        ":mutex4_test",
+        ":mutex5_test",
+        ":mutex6_test",
+        ":mutex6e_test",
+        ":mutex6es_test",
+        ":mutex6n_test",
+        ":mutex6r_test",
+        ":mutex6rs_test",
+        ":mutex6s_test",
+        ":mutex7_test",
+        ":mutex7e_test",
+        ":mutex7n_test",
+        ":mutex7r_test",
+        ":mutex8_test",
+        ":mutex8e_test",
+        ":mutex8n_test",
+        ":mutex8r_test",
+        ":once1_test",
+        ":once2_test",
+        ":once3_test",
+        ":once4_test",
+        # Don't have openmp installed in workspace.
+        # ":openmp1_test",
+        ":priority1_test",
+        ":priority2_test",
+        ":reuse1_test",
+        ":reuse2_test",
+        ":robust1_test",
+        ":robust2_test",
+        ":robust3_test",
+        ":robust4_test",
+        ":robust5_test",
+        ":rwlock1_test",
+        ":rwlock2_t_test",
+        ":rwlock2_test",
+        ":rwlock3_t_test",
+        ":rwlock3_test",
+        ":rwlock4_t_test",
+        ":rwlock4_test",
+        ":rwlock5_t_test",
+        ":rwlock5_test",
+        ":rwlock6_t2_test",
+        ":rwlock6_t_test",
+        ":rwlock6_test",
+        ":rwlock7_test",
+        ":rwlock8_test",
+        ":self1_test",
+        ":self2_test",
+        ":semaphore1_test",
+        ":semaphore2_test",
+        ":semaphore3_test",
+        ":semaphore4_test",
+        ":semaphore4t_test",
+        ":semaphore5_test",
+        ":sequence1_test",
+        ":sizes_test",
+        ":spin1_test",
+        ":spin2_test",
+        ":spin3_test",
+        ":spin4_test",
+        ":stress1_test",
+        ":tsd1_test",
+        ":tsd2_test",
+        ":valid1_test",
+        ":valid2_test",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "test_dll_lib",
+    hdrs = [
+        "test.h",
+    ],
+    data = [
+        "//:test_headers",
+    ],
+)
+
+cc_library(
+    name = "test_lib",
+    hdrs = [
+        "test.h",
+    ],
+    data = [
+        "//:test_headers",
+    ],
+    deps = [
+        "//:pthread",
+    ],
+)
+
+cc_test(
+    name = "barrier1_test",
+    srcs = ["barrier1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "barrier2_test",
+    srcs = ["barrier2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "barrier3_test",
+    srcs = ["barrier3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "barrier4_test",
+    srcs = ["barrier4.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "barrier5_test",
+    srcs = ["barrier5.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "barrier6_test",
+    srcs = ["barrier6.c"],
+    deps = [":test_lib"],
+)
+
+cc_library(
+    name = "benchlib",
+    srcs = ["benchlib.c"],
+    hdrs = ["benchtest.h"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "benchtest1_test",
+    srcs = ["benchtest1.c"],
+    deps = [
+        ":benchlib",
+        ":test_lib",
+    ],
+)
+
+cc_test(
+    name = "benchtest2_test",
+    srcs = ["benchtest2.c"],
+    deps = [
+        ":benchlib",
+        ":test_lib",
+    ],
+)
+
+cc_test(
+    name = "benchtest3_test",
+    srcs = ["benchtest3.c"],
+    deps = [
+        ":benchlib",
+        ":test_lib",
+    ],
+)
+
+cc_test(
+    name = "benchtest4_test",
+    srcs = ["benchtest4.c"],
+    deps = [
+        ":benchlib",
+        ":test_lib",
+    ],
+)
+
+cc_test(
+    name = "benchtest5_test",
+    srcs = ["benchtest5.c"],
+    deps = [
+        ":benchlib",
+        ":test_lib",
+    ],
+)
+
+cc_test(
+    name = "cancel1_test",
+    srcs = ["cancel1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "cancel2_test",
+    srcs = ["cancel2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "cancel3_test",
+    srcs = ["cancel3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "cancel4_test",
+    srcs = ["cancel4.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "cancel5_test",
+    srcs = ["cancel5.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "cancel6a_test",
+    srcs = ["cancel6a.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "cancel6d_test",
+    srcs = ["cancel6d.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "cancel7_test",
+    srcs = ["cancel7.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "cancel8_test",
+    srcs = ["cancel8.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "cancel9_test",
+    srcs = ["cancel9.c"],
+    linkopts = [
+        "ws2_32.lib",
+    ],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "cleanup0_test",
+    srcs = ["cleanup0.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "cleanup1_test",
+    srcs = ["cleanup1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "cleanup2_test",
+    srcs = ["cleanup2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "cleanup3_test",
+    srcs = ["cleanup3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar1_test",
+    srcs = ["condvar1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar1_1_test",
+    srcs = ["condvar1_1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar1_2_test",
+    srcs = ["condvar1_2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar2_test",
+    srcs = ["condvar2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar2_1_test",
+    srcs = ["condvar2_1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar3_test",
+    srcs = ["condvar3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar3_1_test",
+    srcs = ["condvar3_1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar3_2_test",
+    srcs = ["condvar3_2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar3_3_test",
+    srcs = ["condvar3_3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar4_test",
+    srcs = ["condvar4.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar5_test",
+    srcs = ["condvar5.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar6_test",
+    srcs = ["condvar6.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar7_test",
+    srcs = ["condvar7.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar8_test",
+    srcs = ["condvar8.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "condvar9_test",
+    srcs = ["condvar9.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "context1_test",
+    srcs = ["context1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "count1_test",
+    srcs = ["count1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "create1_test",
+    srcs = ["create1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "create2_test",
+    srcs = ["create2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "create3_test",
+    srcs = ["create3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "delay1_test",
+    srcs = ["delay1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "delay2_test",
+    srcs = ["delay2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "detach1_test",
+    srcs = ["detach1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "equal1_test",
+    srcs = ["equal1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "errno1_test",
+    srcs = ["errno1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "exception1_test",
+    srcs = ["exception1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "exception2_test",
+    srcs = ["exception2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "exception3_test",
+    srcs = ["exception3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "exit1_test",
+    srcs = ["exit1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "exit2_test",
+    srcs = ["exit2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "exit3_test",
+    srcs = ["exit3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "exit4_test",
+    srcs = ["exit4.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "exit5_test",
+    srcs = ["exit5.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "eyal1_test",
+    srcs = ["eyal1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "inherit1_test",
+    srcs = ["inherit1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "join0_test",
+    srcs = ["join0.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "join1_test",
+    srcs = ["join1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "join2_test",
+    srcs = ["join2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "join3_test",
+    srcs = ["join3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "kill1_test",
+    srcs = ["kill1.c"],
+    deps = [":test_lib"],
+)
+
+# Needs dll?
+# cc_test(
+#     name = "loadfree_test",
+#     srcs = ["loadfree.c"],
+#     deps = [
+#         ":test_dll_lib",
+#         "//:headers",
+#         "//dll:pthread_dll_import",
+#     ],
+# )
+
+cc_test(
+    name = "mutex1_test",
+    srcs = ["mutex1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex1e_test",
+    srcs = ["mutex1e.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex1n_test",
+    srcs = ["mutex1n.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex1r_test",
+    srcs = ["mutex1r.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex2_test",
+    srcs = ["mutex2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex2e_test",
+    srcs = ["mutex2e.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex2r_test",
+    srcs = ["mutex2r.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex3_test",
+    srcs = ["mutex3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex3e_test",
+    srcs = ["mutex3e.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex3r_test",
+    srcs = ["mutex3r.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex4_test",
+    srcs = ["mutex4.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex5_test",
+    srcs = ["mutex5.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex6_test",
+    srcs = ["mutex6.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex6e_test",
+    srcs = ["mutex6e.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex6es_test",
+    srcs = ["mutex6es.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex6n_test",
+    srcs = ["mutex6n.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex6r_test",
+    srcs = ["mutex6r.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex6rs_test",
+    srcs = ["mutex6rs.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex6s_test",
+    srcs = ["mutex6s.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex7_test",
+    srcs = ["mutex7.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex7e_test",
+    srcs = ["mutex7e.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex7n_test",
+    srcs = ["mutex7n.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex7r_test",
+    srcs = ["mutex7r.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex8_test",
+    srcs = ["mutex8.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex8e_test",
+    srcs = ["mutex8e.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex8n_test",
+    srcs = ["mutex8n.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "mutex8r_test",
+    srcs = ["mutex8r.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "once1_test",
+    srcs = ["once1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "once2_test",
+    srcs = ["once2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "once3_test",
+    srcs = ["once3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "once4_test",
+    srcs = ["once4.c"],
+    deps = [":test_lib"],
+)
+
+# Needs openmp.
+# cc_test(
+#     name = "openmp1_test",
+#     srcs = ["openmp1.c"],
+#     deps = [":test_lib"],
+# )
+
+cc_test(
+    name = "priority1_test",
+    srcs = ["priority1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "priority2_test",
+    srcs = ["priority2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "reuse1_test",
+    srcs = ["reuse1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "reuse2_test",
+    srcs = ["reuse2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "robust1_test",
+    srcs = ["robust1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "robust2_test",
+    srcs = ["robust2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "robust3_test",
+    srcs = ["robust3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "robust4_test",
+    srcs = ["robust4.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "robust5_test",
+    srcs = ["robust5.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock1_test",
+    srcs = ["rwlock1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock2_test",
+    srcs = ["rwlock2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock2_t_test",
+    srcs = ["rwlock2_t.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock3_test",
+    srcs = ["rwlock3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock3_t_test",
+    srcs = ["rwlock3_t.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock4_test",
+    srcs = ["rwlock4.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock4_t_test",
+    srcs = ["rwlock4_t.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock5_test",
+    srcs = ["rwlock5.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock5_t_test",
+    srcs = ["rwlock5_t.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock6_test",
+    srcs = ["rwlock6.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock6_t_test",
+    srcs = ["rwlock6_t.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock6_t2_test",
+    srcs = ["rwlock6_t2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock7_test",
+    srcs = ["rwlock7.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "rwlock8_test",
+    srcs = ["rwlock8.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "self1_test",
+    srcs = ["self1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "self2_test",
+    srcs = ["self2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "semaphore1_test",
+    srcs = ["semaphore1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "semaphore2_test",
+    srcs = ["semaphore2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "semaphore3_test",
+    srcs = ["semaphore3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "semaphore4_test",
+    srcs = ["semaphore4.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "semaphore4t_test",
+    srcs = ["semaphore4t.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "semaphore5_test",
+    srcs = ["semaphore5.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "sequence1_test",
+    srcs = ["sequence1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "sizes_test",
+    srcs = ["sizes.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "spin1_test",
+    srcs = ["spin1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "spin2_test",
+    srcs = ["spin2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "spin3_test",
+    srcs = ["spin3.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "spin4_test",
+    srcs = ["spin4.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "stress1_test",
+    srcs = ["stress1.c"],
+    deps = [":test_lib"],
+)
+
+cc_binary(
+    name = "tryentercs",
+    srcs = ["tryentercs.c"],
+)
+
+cc_binary(
+    name = "tryentercs2",
+    srcs = ["tryentercs2.c"],
+)
+
+cc_test(
+    name = "tsd1_test",
+    srcs = ["tsd1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "tsd2_test",
+    srcs = ["tsd2.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "valid1_test",
+    srcs = ["valid1.c"],
+    deps = [":test_lib"],
+)
+
+cc_test(
+    name = "valid2_test",
+    srcs = ["valid2.c"],
+    deps = [":test_lib"],
+)
