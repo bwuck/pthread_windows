@@ -1,20 +1,7 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
 
-alias(
+test_suite(
     name = "all_tests",
-    actual = select({
-        "//:platform_windows": ":windows_all_tests",
-        "//conditions:default": ":no_tests",
-    }),
-)
-
-test_suite(
-    name = "no_tests",
-    tests = [],
-)
-
-test_suite(
-    name = "windows_all_tests",
     tests = [
         ":barrier1_test",
         ":barrier2_test",
@@ -164,9 +151,12 @@ test_suite(
 
 cc_library(
     name = "test_dll_lib",
-    hdrs = [
-        "test.h",
-    ],
+    hdrs = select({
+        "//:platform_windows": [
+            "test.h",
+        ],
+        "//conditions:default": [],
+    }),
     data = [
         "//:test_headers",
     ],
@@ -174,9 +164,12 @@ cc_library(
 
 cc_library(
     name = "test_lib",
-    hdrs = [
-        "test.h",
-    ],
+    hdrs = select({
+        "//:platform_windows": [
+            "test.h",
+        ],
+        "//conditions:default": [],
+    }),
     data = [
         "//:test_headers",
     ],
@@ -187,7 +180,14 @@ cc_library(
 
 cc_test(
     name = "barrier1_test",
-    srcs = ["barrier1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "barrier1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
