@@ -1,7 +1,20 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
 
-test_suite(
+alias(
     name = "all_tests",
+    actual = select({
+        "//:platform_windows": ":windows_all_tests",
+        "//conditions:default": ":no_tests",
+    }),
+)
+
+test_suite(
+    name = "no_tests",
+    tests = [],
+)
+
+test_suite(
+    name = "windows_all_tests",
     tests = [
         ":barrier1_test",
         ":barrier2_test",
