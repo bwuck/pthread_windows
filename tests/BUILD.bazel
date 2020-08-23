@@ -1492,7 +1492,7 @@ cc_test(
     }),
     copts = select({
         "//:platform_windows": [
-            "/openmp",
+            "-openmp",
         ],
         "//conditions:default": [],
     }),
