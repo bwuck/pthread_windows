@@ -101,8 +101,7 @@ test_suite(
         ":once2_test",
         ":once3_test",
         ":once4_test",
-        # Don't have openmp installed in workspace.
-        # ":openmp1_test",
+        ":openmp1_test",
         ":priority1_test",
         ":priority2_test",
         ":reuse1_test",
@@ -193,44 +192,93 @@ cc_test(
 
 cc_test(
     name = "barrier2_test",
-    srcs = ["barrier2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "barrier2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "barrier3_test",
-    srcs = ["barrier3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "barrier3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "barrier4_test",
-    srcs = ["barrier4.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "barrier4.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "barrier5_test",
-    srcs = ["barrier5.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "barrier5.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "barrier6_test",
-    srcs = ["barrier6.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "barrier6.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_library(
     name = "benchlib",
-    srcs = ["benchlib.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "benchlib.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     hdrs = ["benchtest.h"],
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "benchtest1_test",
-    srcs = ["benchtest1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "benchtest1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [
         ":benchlib",
         ":test_lib",
@@ -239,7 +287,14 @@ cc_test(
 
 cc_test(
     name = "benchtest2_test",
-    srcs = ["benchtest2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "benchtest2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [
         ":benchlib",
         ":test_lib",
@@ -248,7 +303,14 @@ cc_test(
 
 cc_test(
     name = "benchtest3_test",
-    srcs = ["benchtest3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "benchtest3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [
         ":benchlib",
         ":test_lib",
@@ -257,7 +319,14 @@ cc_test(
 
 cc_test(
     name = "benchtest4_test",
-    srcs = ["benchtest4.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "benchtest4.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [
         ":benchlib",
         ":test_lib",
@@ -266,7 +335,14 @@ cc_test(
 
 cc_test(
     name = "benchtest5_test",
-    srcs = ["benchtest5.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "benchtest5.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [
         ":benchlib",
         ":test_lib",
@@ -275,335 +351,724 @@ cc_test(
 
 cc_test(
     name = "cancel1_test",
-    srcs = ["cancel1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "cancel1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "cancel2_test",
-    srcs = ["cancel2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "cancel2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "cancel3_test",
-    srcs = ["cancel3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "cancel3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "cancel4_test",
-    srcs = ["cancel4.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "cancel4.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "cancel5_test",
-    srcs = ["cancel5.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "cancel5.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "cancel6a_test",
-    srcs = ["cancel6a.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "cancel6a.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "cancel6d_test",
-    srcs = ["cancel6d.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "cancel6d.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "cancel7_test",
-    srcs = ["cancel7.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "cancel7.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "cancel8_test",
-    srcs = ["cancel8.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "cancel8.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "cancel9_test",
-    srcs = ["cancel9.c"],
-    linkopts = [
-        "ws2_32.lib",
-    ],
+    srcs = select({
+        "//:platform_windows": [
+            "cancel9.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
+    linkopts = select({
+        "//:platform_windows": [
+            "-DEFAULTLIB:Ws2_32.lib",
+        ],
+        "//conditions:default": [
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "cleanup0_test",
-    srcs = ["cleanup0.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "cleanup0.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "cleanup1_test",
-    srcs = ["cleanup1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "cleanup1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "cleanup2_test",
-    srcs = ["cleanup2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "cleanup2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "cleanup3_test",
-    srcs = ["cleanup3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "cleanup3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar1_test",
-    srcs = ["condvar1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar1_1_test",
-    srcs = ["condvar1_1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar1_1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar1_2_test",
-    srcs = ["condvar1_2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar1_2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar2_test",
-    srcs = ["condvar2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar2_1_test",
-    srcs = ["condvar2_1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar2_1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar3_test",
-    srcs = ["condvar3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar3_1_test",
-    srcs = ["condvar3_1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar3_1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar3_2_test",
-    srcs = ["condvar3_2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar3_2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar3_3_test",
-    srcs = ["condvar3_3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar3_3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar4_test",
-    srcs = ["condvar4.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar4.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar5_test",
-    srcs = ["condvar5.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar5.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar6_test",
-    srcs = ["condvar6.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar6.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar7_test",
-    srcs = ["condvar7.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar7.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar8_test",
-    srcs = ["condvar8.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar8.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "condvar9_test",
-    srcs = ["condvar9.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "condvar9.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "context1_test",
-    srcs = ["context1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "context1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "count1_test",
-    srcs = ["count1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "count1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "create1_test",
-    srcs = ["create1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "create1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "create2_test",
-    srcs = ["create2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "create2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "create3_test",
-    srcs = ["create3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "create3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "delay1_test",
-    srcs = ["delay1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "delay1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "delay2_test",
-    srcs = ["delay2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "delay2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "detach1_test",
-    srcs = ["detach1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "detach1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "equal1_test",
-    srcs = ["equal1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "equal1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "errno1_test",
-    srcs = ["errno1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "errno1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "exception1_test",
-    srcs = ["exception1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "exception1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "exception2_test",
-    srcs = ["exception2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "exception2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "exception3_test",
-    srcs = ["exception3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "exception3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "exit1_test",
-    srcs = ["exit1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "exit1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "exit2_test",
-    srcs = ["exit2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "exit2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "exit3_test",
-    srcs = ["exit3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "exit3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "exit4_test",
-    srcs = ["exit4.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "exit4.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "exit5_test",
-    srcs = ["exit5.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "exit5.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "eyal1_test",
-    srcs = ["eyal1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "eyal1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "inherit1_test",
-    srcs = ["inherit1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "inherit1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "join0_test",
-    srcs = ["join0.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "join0.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "join1_test",
-    srcs = ["join1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "join1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "join2_test",
-    srcs = ["join2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "join2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "join3_test",
-    srcs = ["join3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "join3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "kill1_test",
-    srcs = ["kill1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "kill1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 # Needs dll?
 # cc_test(
 #     name = "loadfree_test",
-#     srcs = ["loadfree.c"],
+#     srcs = select({
+#         "//:platform_windows": [
+#             "loadfree.c",
+#         ],
+#         "//conditions:default": [
+#             "stub.c",
+#         ],
+#     }),
 #     deps = [
 #         ":test_dll_lib",
 #         "//:headers",
@@ -613,455 +1078,993 @@ cc_test(
 
 cc_test(
     name = "mutex1_test",
-    srcs = ["mutex1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex1e_test",
-    srcs = ["mutex1e.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex1e.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex1n_test",
-    srcs = ["mutex1n.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex1n.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex1r_test",
-    srcs = ["mutex1r.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex1r.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex2_test",
-    srcs = ["mutex2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex2e_test",
-    srcs = ["mutex2e.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex2e.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex2r_test",
-    srcs = ["mutex2r.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex2r.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex3_test",
-    srcs = ["mutex3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex3e_test",
-    srcs = ["mutex3e.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex3e.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex3r_test",
-    srcs = ["mutex3r.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex3r.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex4_test",
-    srcs = ["mutex4.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex4.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex5_test",
-    srcs = ["mutex5.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex5.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex6_test",
-    srcs = ["mutex6.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex6.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex6e_test",
-    srcs = ["mutex6e.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex6e.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex6es_test",
-    srcs = ["mutex6es.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex6es.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex6n_test",
-    srcs = ["mutex6n.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex6n.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex6r_test",
-    srcs = ["mutex6r.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex6r.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex6rs_test",
-    srcs = ["mutex6rs.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex6rs.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex6s_test",
-    srcs = ["mutex6s.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex6s.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex7_test",
-    srcs = ["mutex7.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex7.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex7e_test",
-    srcs = ["mutex7e.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex7e.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex7n_test",
-    srcs = ["mutex7n.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex7n.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex7r_test",
-    srcs = ["mutex7r.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex7r.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex8_test",
-    srcs = ["mutex8.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex8.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex8e_test",
-    srcs = ["mutex8e.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex8e.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex8n_test",
-    srcs = ["mutex8n.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex8n.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "mutex8r_test",
-    srcs = ["mutex8r.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "mutex8r.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "once1_test",
-    srcs = ["once1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "once1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "once2_test",
-    srcs = ["once2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "once2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "once3_test",
-    srcs = ["once3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "once3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "once4_test",
-    srcs = ["once4.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "once4.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 # Needs openmp.
-# cc_test(
-#     name = "openmp1_test",
-#     srcs = ["openmp1.c"],
-#     deps = [":test_lib"],
-# )
+cc_test(
+    name = "openmp1_test",
+    srcs = select({
+        "//:platform_windows": [
+            "openmp1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
+    copts = select({
+        "//:platform_windows": [
+            "/openmp",
+        ],
+        "//conditions:default": [],
+    }),
+    deps = [":test_lib"],
+)
 
 cc_test(
     name = "priority1_test",
-    srcs = ["priority1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "priority1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "priority2_test",
-    srcs = ["priority2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "priority2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "reuse1_test",
-    srcs = ["reuse1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "reuse1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "reuse2_test",
-    srcs = ["reuse2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "reuse2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "robust1_test",
-    srcs = ["robust1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "robust1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "robust2_test",
-    srcs = ["robust2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "robust2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "robust3_test",
-    srcs = ["robust3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "robust3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "robust4_test",
-    srcs = ["robust4.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "robust4.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "robust5_test",
-    srcs = ["robust5.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "robust5.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock1_test",
-    srcs = ["rwlock1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock2_test",
-    srcs = ["rwlock2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock2_t_test",
-    srcs = ["rwlock2_t.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock2_t.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock3_test",
-    srcs = ["rwlock3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock3_t_test",
-    srcs = ["rwlock3_t.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock3_t.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock4_test",
-    srcs = ["rwlock4.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock4.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock4_t_test",
-    srcs = ["rwlock4_t.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock4_t.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock5_test",
-    srcs = ["rwlock5.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock5.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock5_t_test",
-    srcs = ["rwlock5_t.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock5_t.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock6_test",
-    srcs = ["rwlock6.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock6.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock6_t_test",
-    srcs = ["rwlock6_t.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock6_t.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock6_t2_test",
-    srcs = ["rwlock6_t2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock6_t2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock7_test",
-    srcs = ["rwlock7.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock7.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "rwlock8_test",
-    srcs = ["rwlock8.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "rwlock8.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "self1_test",
-    srcs = ["self1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "self1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "self2_test",
-    srcs = ["self2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "self2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "semaphore1_test",
-    srcs = ["semaphore1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "semaphore1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "semaphore2_test",
-    srcs = ["semaphore2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "semaphore2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "semaphore3_test",
-    srcs = ["semaphore3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "semaphore3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "semaphore4_test",
-    srcs = ["semaphore4.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "semaphore4.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "semaphore4t_test",
-    srcs = ["semaphore4t.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "semaphore4t.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "semaphore5_test",
-    srcs = ["semaphore5.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "semaphore5.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "sequence1_test",
-    srcs = ["sequence1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "sequence1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "sizes_test",
-    srcs = ["sizes.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "sizes.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "spin1_test",
-    srcs = ["spin1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "spin1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "spin2_test",
-    srcs = ["spin2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "spin2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "spin3_test",
-    srcs = ["spin3.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "spin3.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "spin4_test",
-    srcs = ["spin4.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "spin4.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "stress1_test",
-    srcs = ["stress1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "stress1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_binary(
     name = "tryentercs",
-    srcs = ["tryentercs.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "tryentercs.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
 )
 
 cc_binary(
     name = "tryentercs2",
-    srcs = ["tryentercs2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "tryentercs2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
 )
 
 cc_test(
     name = "tsd1_test",
-    srcs = ["tsd1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "tsd1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "tsd2_test",
-    srcs = ["tsd2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "tsd2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "valid1_test",
-    srcs = ["valid1.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "valid1.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
 
 cc_test(
     name = "valid2_test",
-    srcs = ["valid2.c"],
+    srcs = select({
+        "//:platform_windows": [
+            "valid2.c",
+        ],
+        "//conditions:default": [
+            "stub.c",
+        ],
+    }),
     deps = [":test_lib"],
 )
